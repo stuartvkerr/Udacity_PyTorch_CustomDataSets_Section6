@@ -1,28 +1,32 @@
 import torch
-import torch.nn as nn
-import torch.nn.functional as F
-import torch.mps as mps
+from torch import nn
+from torch.utils.data import DataLoader
 
+# Import torchvision
 import torchvision
-import torchvision.transforms as transforms
-from torchvision.transforms import v2
-from torchvision.datasets import MNIST
 from torchvision import datasets
+# from torchvision.transforms import ToTensor
+from torchvision.transforms import v2
+
 
 from torchmetrics import Accuracy
 from torchmetrics.classification import MulticlassConfusionMatrix, ConfusionMatrix
 from mlxtend.plotting import plot_confusion_matrix
 
-from torch.utils.data import Dataset, DataLoader
-from torch.utils.tensorboard  import SummaryWriter
-
-import numpy as np
-import sklearn as sklearn
+# Import matplotlib for visualization
 import matplotlib.pyplot as plt
 
+import requests
+import random
+import zipfile
 from pathlib import Path
+import os
 
-from timeit import default_timer as timer
-from tqdm.auto import tqdm
-import math
-import sys
+from PIL import Image
+
+# device independence
+device = torch.device(
+    "cuda" if torch.cuda.is_available() else
+    "mps" if torch.backends.mps.is_available() else
+    "cpu"
+)
