@@ -5,7 +5,6 @@ from torch.utils.data import DataLoader
 # Import torchvision
 import torchvision
 from torchvision import datasets
-# from torchvision.transforms import ToTensor
 from torchvision.transforms import v2
 
 
